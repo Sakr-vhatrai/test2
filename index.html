@@ -1,17 +1,185 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>tero taauko</title>
+<head><meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="icon" type="image/png" href="logo_test_2.png">
+	 <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ 	<style type="text/css">
+ 		.box{
+ 			background-image: url(logo_test_2.png);
+ 			background-size: cover;
+ 		}
+ 		.trans{
+ 			background: rgba(0,0,0,.6);
+ 			
+ 		}
+ 		
+ 		
+ 	</style>
+
+ 
 </head>
 <body>
-	terei taauko
+	<nav class="hide-on-med-and-down">
+		<div class="container">
+			<div class="input-field">
+			<ul class="right">
+				
+				<li><input type="text" placeholder="USer ID"  ></li>
+				<li><input id= type="password" placeholder="password"></li>
+				<li><a href="#" class="btn green waves-effect waves-light">login</a></li>
+				<li><a href="#">forgot password??</a></li>
+				<li><a href="#">About US</a></li>
+
+			</ul>
+			</div>
+			</div>
+
+	</nav>
+	<div class="row" id="reg">
+		
+		<div class="col s12  m6 l5" >
+			<div class="card " >
+				
+				<div class="card-contex green-text">
+					<span class="card-title center-align">The Scintillators</span>
+					<h1>Hey! Welcome,</h1>
+					<div class="card-image">
+					<img class="responsive-img" src="ttt.png">
+				</div>
+				</div>
+			 
+			</div>
+			
+		</div>
+		<div class="col s12 m6 l6 box">
+			<div class="card  white-text trans">
+			<span class="card-title center-align">Join With Us .</span>
+			<h1 class="center-align hide-on-med-and-down">Login Here,</h1>
+			<h4 class="center-align hide-on-large">Login Here,</h4>
+				<div class="card-contex white-text">
+			<div class="form-field">
+
+				<div class="input-field center-align">
+				<input class="white-text" id="uid" type="Text" placeholder="Roll NO.">
+				<input class="white-text" id="paswod" type="password" placeholder="password">
+				</div>
+
+				<div class="form-field white-text">
+				<label>
+				<input type="checkbox" class="filled-in">
+				<span class=" white-text" id="paswd">see password</span>
+				</label>
+				<a id="logingare" style="width: 100%" class="btn-large indigo waves-effect waves-light">Login</a>
+				<div class="card-action">
+				<h4>New here, join us today..</h4>
+				<h5>setup easily by clicking below..... </h5>
+				<button class="btn-large green waves-effect waves-light" id="signup">Register Here</button>
+				</div>
+				</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<div class="container " id="show_signup">
+	<div class="col s12 m6 l6 box">
+			<div class="card yellow-text dark-2 trans">
+			<span class="card-title center-align">lets fill up your Details below.</span>
+			<h1 class="center-align hide-on-med-and-down">Register Here,</h1>
+			<h5 class="center-align hide-on-large">Register Here,</h5>
+				<div class="card-contex white-text">
+			<div class="form-field">
+				<div class="input-fields amber-text text-lighten-4">
+				<input type="Text" placeholder="Full Name" required>
+				<input type="email" placeholder="Email ID">
+				<input type="Text" placeholder="IOE Roll No.">
+				<input type="Text" placeholder="contact">
+				<input id="paswod" type="password" placeholder="password">
+				</div>
+				<div class="form-field white-text">
+				<label>
+				<input type="checkbox" class="filled-in">
+				<span class=" white-text" id="paswd">see password</span>
+				</label>
+				<a href="#" style="width: 100%;  margin-top:15px;" class="btn-large indigo waves-effect waves-light">Submit</a>
 
 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-<?php
+<div id="lale">
+	hi lale
+</div>
 
-	echo("tero taauuukokoko");
 
-?>
+<footer class="page-footer">
+	 <div class="footer-copyright">
+            <div class="container">
+            © 2019 The Scintillators
+</footer>
 </body>
+<script src=" https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     
+    <script type='text/javascript'>
+    		$(document).ready(function() {
+    			$("#lale").hide();
+  			$('#paswd').click(function() {
+    	if ($('#paswod').attr('type') == 'text') {
+      $('#paswod').attr('type', 'password');
+    } else {
+      $('#paswod').attr('type', 'text');
+    }
+  });
+  			$("#show_signup").hide();
+
+
+
+    $("#signup").click(function(){
+    $("#reg").hide();	
+    $("#show_signup").show();	
+  });
+
+	$("#logingare").click(function(){
+		var email= $('#uid').val();
+		var pass = $('#paswod').val();
+		console.log(email + pass);
+
+		$.ajax({
+			url:"/login.php",
+			type: "POST",
+			 data: { uid: email, pid: pass },
+		        success: function(response) {
+		            if(data==0)
+						{
+							console.log('wow ma aaipuge');
+							$("#lale").show();
+							$("#reg").hide();	
+						}
+					else{
+						console.log('aadkiye mah baato mai');
+						$("#lale").show();
+						$("#reg").hide();
+						$("#lale").append("<h1>Vaag saale</h1>");
+					}
+		       }
+		  });
+		});
+
+});
+</script>
 </html>
